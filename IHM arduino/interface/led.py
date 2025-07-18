@@ -3,7 +3,7 @@ import serial
 import time
 
 # Remplace 'COM3' par le port de ton Arduino
-arduino = serial.Serial('COM3', 9600)
+arduino = serial.Serial('COM7', 9600)
 time.sleep(2)  # Attente que l’Arduino démarre
 
 def led_on():

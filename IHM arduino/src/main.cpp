@@ -1,17 +1,18 @@
 #include <Arduino.h>
 
-
-
 void setup() {
-  // put your setup code here, to run once:
+  pinMode(13, OUTPUT);
   Serial.begin(9600);
-  Serial.println("Hello, World!");
-
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  Serial.println("Looping...");
-  delay(1000); // Wait for a second before repeating
+  if (Serial.available()) {
+    char cmd = Serial.read();
+    if (cmd == '1') {
+      digitalWrite(13, HIGH); // Allume la LED
+    } else if (cmd == '0') {
+      digitalWrite(13, LOW);  // Éteint la LED
+    }
+  }
 }
 
