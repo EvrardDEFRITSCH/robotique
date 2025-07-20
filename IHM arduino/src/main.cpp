@@ -16,18 +16,21 @@ void testFonction(){
       digitalWrite(13, HIGH); // Allume la LED
     } else if (cmd == '0') {
       digitalWrite(13, LOW);  // Éteint la LED
-    } else if (cmd== '3'){
-      digitalWrite(13, HIGH); // Allume la LED
-      delay(500);
-      digitalWrite(13, LOW);  // Éteint la LED
-      delay(500);
-    }
+    } 
+}
+
+void distance(){
+  char cmd = Serial.read();
+  if (cmd =='3'){
+    float distance = ultrasonic.read(); // en cm
+    Serial.println(distance);
+    delay(500);
+  }
+
 }
 void loop() {
-  float distance = ultrasonic.read(); // en cm
-  Serial.println(distance);
-
-  delay(500);
+  
+  distance();
   testFonction();
   
 }

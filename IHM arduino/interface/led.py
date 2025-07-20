@@ -35,17 +35,21 @@ btn_off = tk.Button(cadreTest, text="OFF ", command=led_off, bg="grey", fg="whit
 btn_off.pack(pady=0, padx=0)
 
 # Lectur capteur ultrason
-cadreUltrason = tk.Frame(fenetre, bg="#252525") 
+cadreUltrason = tk.Frame(fenetre, bg="#4D4D4D") 
 cadreUltrason.place(x=200, y=100, width=150, height=150)  # Positionnement du cadre
+
 
 def distance():
     valeur = arduino.readline().decode('utf-8').strip()  # Lecture de la valeur depuis l'Arduino
     distance_label.config(text=f"Distance: {valeur} cm")  # Mise à jour de l'étiquette avec la distance
     fenetre.after(100, distance)  # Appel de la fonction toutes les 100 ms
     
-distance_label = tk.Label(fenetre, text="Distance : ??? cm", font=("Arial", 18))
+distance_label = tk.Label(cadreUltrason, text="Distance : ??? cm", font=("Arial", 18))
 distance_label.pack(padx=20, pady=20)
 distance()  # Démarrer la lecture de la distance
+
+btn_distance = tk.Button(cadreUltrason, text="ON ", command=distance, bg="grey", fg="white", font=("Arial", 9),justify="center",width=15)
+btn_distance.pack(pady=0, padx=0)
 
 
 # Lancer la fenêtre
